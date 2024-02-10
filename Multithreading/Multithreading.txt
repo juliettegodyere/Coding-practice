@@ -1,0 +1,143 @@
+What is Multitasking?
+
+This is a way of doing multiple things at the same time. is an operating system that gives you the perception of two or more 
+tasks/jobs/processes running simultaneously. It does this by dividing system resources amongst these tasks/jobs/processes and 
+switching between the tasks/jobs/processes while they are executing over and over again. The modern CPUs supports Multitasking the switching is 
+so fast that it looks like the CPU is executing multiple processes simultaneously.
+
+They can support either preemptive multitasking, where the OS doles out time to applications (virtually all modern OSes) or 
+cooperative multitasking, where the OS waits for the program to give back control (Windows 3.x, Mac OS 9 and earlier), leading to 
+hangs and crashes. Also known as Timesharing, multitasking is a logical extension of multiprogramming. 
+
+There are two types of Multitasking
+1. Process Based Multitasking
+2. Thread Based Multitasking
+
+Process Based Multitasking is when two or more tasks are being performed 
+concurrently in a computer. Eg. We can listen to music and browse the internet at the same time. 
+The processes in this example are the music player and browser. 
+
+Thread Based Multitasking is when 2 or more tasks that are part of the same 
+process are being concurrently on the same computer.
+Example: Using a browser we can navigate through the webpage and at the same time download a file. In this example, 
+navigation is one thread, and downloading is another thread. Also in a word-processing application like MS Word, we can 
+type text in one thread, and spell checker checks for mistakes in another thread. 
+
+What are the differences between Processes and Threads
+1. Process: 2 or more programs or processes can be run concurrently. Thread: 2 or more threads can run concurrently
+2. In process based multitasking a program is the smalliest unit while in thread based multitasking, a thread is the smallest unit.
+3. In process based multitasking, a program is the biggest unit while in thread based multitasking thread is the smallest unit
+4. Process based multitasking requires more overhead than thread based multitasking
+5. Process requires it's own address space, while threads share same address space
+6. The process to process communication is expensive but thread to thread communication is not expensive
+
+How can we create Threads?
+
+1. By extending the Thread class
+2. By implementing the Runnable interface
+
+What is the Runnable Interface preffered over the Thread class?
+
+Java does not allow multiple class inheritance and allows multiple interface inheritance. Extinding the Thread class will be a barrier 
+if you want to extend another class in the future.
+
+Thread Methods
+1. Sleep(): It is a static method of the Thread class. It causes the current thread to pause execution of a thread for a specified period of time. 
+During this period of sleep, a thread can be interrupted by another thread using interrupt method. 
+If a thread is sleeping and another thread calls interrupt() on the sleeping thread, it will cause the sleeping thread to wake up prematurely and throw an InterruptedException. 
+This interruption mechanism is one way to interrupt the Thread.sleep() operation.
+
+public class SleepExample {
+    public static void main(String[] args) {
+        Thread sleepingThread = new Thread(() -> {
+            try {
+                System.out.println("Thread is sleeping");
+                Thread.sleep(5000);
+                System.out.println("Thread woke up");
+            } catch (InterruptedException e) {
+                System.out.println("Thread interrupted");
+            }
+        });
+
+        sleepingThread.start();
+
+        // Interrupt the sleeping thread after 2 seconds
+        try {
+            Thread.sleep(2000);
+            sleepingThread.interrupt();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+It has an overloading method. sleep(millis, nano).
+what is millis? In milli seconds - 1000ms - 1s, 1ms - 0.001s. nano: what is nano? 1nanoseconds - 1E-9s. Therefore, 100,000,0000 - 1s.
+What can interrupt the sleep process? Note that sleep() method throws InterruptedException exception, when another thread interrupts the current thread while sleep is active.
+
+2. Join(): Is also a static method of the Thread class. It also has the overloaded methods. In Java multithreading, the join() method is used to wait for a thread to complete its execution. 
+When a thread calls join() on another thread, the current thread will be paused until the target thread being joined completes its execution. This is often used to ensure that certain tasks are completed before moving on to the next phase of a program.
+
+
+public class JoinExample {
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(() -> {
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("Thread 1 - Count: " + i);
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Thread thread2 = new Thread(() -> {
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("Thread 2 - Count: " + i);
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread1.start();
+        try {
+            thread1.join(); // Main thread will wait for thread1 to complete.
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        thread2.start();
+        try {
+            thread2.join(); // Main thread will wait for thread2 to complete.
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Main thread finished.");
+    }
+}
+
+
+Synchronization
+It is a process if 2 or more threads are running simoustanously and all share the same resource, we ensure that only one of the threads 
+can have access to that resource at a time to maintain memory consistency and Thread interferenece. 
+
+What is thread interference?
+It is a process where 2 or more threads that are running currently and modifying the same resource interleave. for example,
+We have two methods, one that increments a count value and the other that decrements the count value.
+Scenerio
+1. Thread A calls count with count 0
+2. Thread B calls count with count 0
+3. Thread A increments count to 1
+4. Thread B decrements count to -1
+
+In this case, we are not certain what the outcome will be because the JVM controls the thread ordering but with know that we will never get
+the expected value. We might get -1 or 1 as a result.
+
+What is Momory inconsistecy caused by concurrency?
+
+

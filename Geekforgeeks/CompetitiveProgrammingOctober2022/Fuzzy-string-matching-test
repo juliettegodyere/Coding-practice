@@ -1,0 +1,31 @@
+
+public class ReplaceElementBySum {
+    // Finds and prints the elements
+    // of the encrypted array
+    static void findEncryptedArray(String arr[], String str)
+    {   
+        int n = arr.length;
+        char char1 = str.toCharacterArray();
+        Arrays.sort(char1);
+
+        for(int i = 0; i < n; i++){
+            char char2 = arr[i].toCharacterArray();
+            Arrays.sort(char2);
+            System.out.println(char2.toString());
+            System.out.println(char1.toString());
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        String str1 = "METRONIDAZOLE TAB 200MG";
+        String strArray[] = {
+            "METRONIDAZOLE TAB 200MG",
+            "PETHIDINE 50MG TABLET",
+            "PENTAZOCINE INJ B.P 30mg / ml",
+            "METRONIDAZOLE 200MG PER 5ML SUSP",
+            "METRONIDAZOLE 400MG TAB",
+        }
+        findEncryptedArray(strArray, str1);
+    }
+}
