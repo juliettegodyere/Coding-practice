@@ -108,7 +108,7 @@ public class LongestSubstringDistinctCharacters {
     }
     public static void main(String args[]) 
     { 
-        String str = "ABCDEFGABEF"; 
+        String str = "aaa"; 
 	    int len = longestDistinct3(str);  
         System.out.print("The length of the longest distinct characters substring is "+ len); 
     }

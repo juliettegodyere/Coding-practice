@@ -18,7 +18,7 @@ public class PermutationsOfSubstring {
         if(left == right){
             //System.out.println(str);
             if(!str.contains("AB")){
-                System.out.println(str);
+                System.out.print(str + " ");
             }
             return;
         }
@@ -31,6 +31,7 @@ public class PermutationsOfSubstring {
     public static void main(String[] args)
     {
         String str = "ABC";
+        //ABC ACB BAC BCA CAB CBA
 
         permute(str, 0, str.length()-1);
     }

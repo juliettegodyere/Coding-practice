@@ -115,7 +115,7 @@ public class Atoi {
         return (int) result;
     }
     public static void main(String[] args){
-        String str = "-1290";
+        String str = "21a";
        
          
         // Function call

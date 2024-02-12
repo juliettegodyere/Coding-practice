@@ -21,7 +21,7 @@ package Strings;
 import java.util.Map;
 import java.util.HashMap;
 
-class GFG{
+public class RomanNumeralToNumber{
 	
 private static final Map<Character,
 						Integer> roman = new HashMap<Character,
@@ -60,22 +60,13 @@ private static int romanToInt(String s)
 	int n = s.length();
 	
 	for(int i = 0; i < n; i++){
-		
-		// If present value is less than next value,
-		// subtract present from next value and add the
-		// resultant to the sum variable.
 		if (i != n - 1 && roman.get(s.charAt(i)) < roman.get(s.charAt(i + 1))){
 			sum += roman.get(s.charAt(i + 1)) - roman.get(s.charAt(i));
-            System.out.println("Increment inside if " + i);
-            System.out.println("Print sum in if " + sum);
 			i++;
 		}else{
 			sum += roman.get(s.charAt(i));
-            System.out.println("Increment inside else " + i);
-            System.out.println("Print sum in else " + sum);
 		}
 	}
-    System.out.println("Print sum after loop " + sum);
 	return sum;
 }
 
@@ -84,7 +75,7 @@ public static void main(String[] args)
 {
 	
 	// Considering inputs given are valid
-	String input = "MCMIV";
+	String input = "III";
 	
 	System.out.print("Integer form of Roman Numeral is " +
 					romanToInt(input));

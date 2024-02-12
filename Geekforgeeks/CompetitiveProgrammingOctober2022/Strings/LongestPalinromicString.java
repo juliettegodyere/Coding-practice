@@ -20,6 +20,7 @@ public class LongestPalinromicString {
     static int longestPal(String str){
         int n = str.length();
         int res = 0;
+        String s = "";
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 if(isPal(str, i, j)){
@@ -31,7 +32,7 @@ public class LongestPalinromicString {
     }
     public static void main(String args[]) 
     { 
-        String str = "geeks"; 
+        String str = "aaaabbaa"; 
 	    int len = longestPal(str);  
         System.out.print("The length of the longest palindromic characters substring is "+ len); 
     }

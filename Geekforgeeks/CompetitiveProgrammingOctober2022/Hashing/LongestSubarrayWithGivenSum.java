@@ -23,9 +23,9 @@ import java.util.HashMap;
 public class LongestSubarrayWithGivenSum {
     public static void main (String[] args) 
     {
-        int arr[] = new int[]{5, 8, -4, -4, 9, -2, 2};
+        int arr[] = new int[]{1,2,3,7,5};
         int n = arr.length;
-        int sum = 0;
+        int sum = 15;
         
         System.out.println(largestSubarrayWithSumX(arr, n, sum));
         
@@ -50,32 +50,35 @@ public class LongestSubarrayWithGivenSum {
       {
              // HashMap to store (sum, index) tuples
              HashMap<Integer, Integer> map = new HashMap<>();
-             int prifix_sum = 0, maxLen = 0;
+             int prefix_sum = 0, maxLen = 0;
  
              // traverse the given array
              for (int i = 0; i < n; i++) {
                  
                   // accumulate sum
-                  prifix_sum += arr[i];
+                  //{1,2,3,7,5}
+                  prefix_sum += arr[i];
                  
                   // when subarray starts from index '0'
-                  if (prifix_sum == k)
-                      maxLen = i + 1;
+                  if (prefix_sum == k){
+                    maxLen = i + 1;
+                  }
+                      
  
                   // make an entry for 'sum' if it is
                   // not present in 'map'
-                  if (!map.containsKey(prifix_sum)) {
-                      map.put(prifix_sum, i);
+                  if (!map.containsKey(prefix_sum)) {
+                      map.put(prefix_sum, i);
                   }
  
                   // check if 'sum-k' is present in 'map'
                   // or not
-                  if (map.containsKey(prifix_sum - k)) {
+                  if (map.containsKey(prefix_sum - k)) {
                        
                       // update maxLength
                     //   if (maxLen < (i - map.get(prifix_sum - k)))
                     //       maxLen = i - map.get(prifix_sum - k);
-                    maxLen = Math.max(maxLen, i - map.get(prifix_sum-k));
+                    maxLen = Math.max(maxLen, i - map.get(prefix_sum-k));
                   }
              }
               

@@ -7,6 +7,9 @@
 
 package Recursion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PermutationGeneration {
     
    static String swap(String str, int i, int j){
@@ -20,21 +23,21 @@ public class PermutationGeneration {
 
     public static void permute(String str, int left, int right){
         if(left == right){
-            System.out.println(str);
-            System.out.println(" am returning");
+            System.out.print(str  + " ");
+            // System.out.println(" am returning");
             return;
         }
        for(int i = left; i <= right; i++){
             String swapped = swap(str, left, i);
-            System.out.println("Left " + left);
-            System.out.println("i " + i);
-            System.out.println("Right " + right);
-            System.out.println("Swapped " + swapped);
+            // System.out.println("Left " + left);
+            // System.out.println("i " + i);
+            // System.out.println("Right " + right);
+            // System.out.println("Swapped " + swapped);
             permute(swapped, left+1, right);
-            System.out.println("Left After Recursion " + left);
-            System.out.println("Right Recursion " + right);
+            // System.out.println("Left After Recursion " + left);
+            // System.out.println("Right Recursion " + right);
             swapped = swap(str, left, i);
-            System.out.println("Swapped After Recursion " + swapped);
+            // System.out.println("Swapped After Recursion " + swapped);
        }
     }
 

@@ -19,7 +19,7 @@ public class AllocatedMinimumPages {
         int high = sum;
         int res = 0;
         while(low <= high){
-            int mid = (low + (high - low))/2;
+            int mid = (high + low)/2;
             
             if(isFeasible(arr, mid, k)){
                 res = mid;
@@ -35,7 +35,7 @@ public class AllocatedMinimumPages {
 
     static boolean isFeasible(int arr[], int mid, int k){
         int currentSum = 0;
-        int count = 0;
+        int count = 1;
         for(int i = 0; i < arr.length; i++){
             if(currentSum+arr[i] > mid){ 
                 count++;
@@ -45,5 +45,12 @@ public class AllocatedMinimumPages {
             }
         }
         return count <= k;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {12, 34, 67, 90};
+        int S = 2;
+
+        System.out.println(minPages(arr, S));
     }
 }

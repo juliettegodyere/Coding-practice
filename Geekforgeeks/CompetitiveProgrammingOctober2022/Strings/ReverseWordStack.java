@@ -23,8 +23,9 @@ public class ReverseWordStack {
         Deque<String> stack = new ArrayDeque<>();
         String st = "";
         for(int i = 0; i < n; i++){
-            if(str.charAt(i) == ' '){
+            if(str.charAt(i) == '.'){
                 stack.push(st);
+                stack.push(".");
                 st = "";
             }else{
                 st = st+str.charAt(i);
@@ -32,7 +33,7 @@ public class ReverseWordStack {
         }
         stack.push(st);
         while(!stack.isEmpty()){
-            System.out.print(stack.pop() + " ");
+            System.out.print(stack.pop() + "");
         }
         
     }
@@ -57,7 +58,7 @@ public class ReverseWordStack {
        // String st = new String(arr);
         int start = 0;
         for(int end = 0; end < arr.length; end++){
-            if(arr[end] == ' '){
+            if(arr[end] == '.'){
                 reverse(arr, start, end+1);
                 start = end + 1;
             }
@@ -77,11 +78,10 @@ public class ReverseWordStack {
     
     public static void main(String[] args) 
     {   
-        String s = "Welcome, to, Gfg";
+        String s = "i.like.this.program.very.much";
         int n=s.length();
-        char[] str = s.toCharArray();
         reverseWords(s, n);
-        System.out.println("After reversing words in the string:");
+        //System.out.println(s);
         // reverseWords2(s,n);
         // System.out.println(str);
     }
