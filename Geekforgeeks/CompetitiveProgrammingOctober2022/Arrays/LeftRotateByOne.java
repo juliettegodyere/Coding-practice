@@ -27,5 +27,9 @@ public class LeftRotateByOne {
         int[] arr = {0, 7, 0, 5, 10};
         int n = arr.length;
         lRotate(arr, n);
+
+        for(int i = 0; i < n; i++){
+            System.out.print(arr[i] + " ");
+        }
     }
 }

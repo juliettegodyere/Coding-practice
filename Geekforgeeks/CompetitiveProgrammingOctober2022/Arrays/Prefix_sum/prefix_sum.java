@@ -28,23 +28,30 @@ public class prefix_sum {
      * prefix_sum = [2, 10, 13,22, 28,33,37]
      * It will take O(N) time to build the prefix sum array
      */
-    static int[] buildPrefixSum(int[] arr, int n){
-        int [] prefix_sum = new int[n];
+    public static int[] calculatePrefixSum(int[] arr, int n) {
+        int[] prefixSum = new int[n];
+        prefixSum[0] = arr[0];
 
-        prefix_sum[0] = arr[0];
-
-        for(int i = 1; i <= n; i++){
-            prefix_sum[i] = prefix_sum[i - 1] + arr[i];
+        for (int i = 1; i < n; i++) {
+            prefixSum[i] = prefixSum[i - 1] + arr[i];
         }
-        return prefix_sum;
+
+        return prefixSum;
     }
-    static int getsum2(int[] prefix_sum, int n, int right, int left){
-        int sum = 0;
-        if(left != 0){
-            sum = prefix_sum[right]  - prefix_sum[left - 1];
-        }else{
-            sum = prefix_sum[right];
+    public static int getSubarraySum(int[] prefixSum, int n, int start, int end) {
+        if (start == 0) {
+            return prefixSum[end];
+        } else {
+            return prefixSum[end] - prefixSum[start - 1];
         }
-        return sum;
+    }
+    public static void main(String[] args) {
+        int[] arr = {1, 3, -2, 4, -1, 2, 1, -5, 4};
+        int[] prefixSum = calculatePrefixSum(arr, arr.length);
+
+        int start = 3;
+        int end = 5;
+        int sum = getSubarraySum(prefixSum, arr.length, start, end);
+        System.out.println("Sum of subarray [" + start + ", " + end + "]: " + sum);
     }
 }

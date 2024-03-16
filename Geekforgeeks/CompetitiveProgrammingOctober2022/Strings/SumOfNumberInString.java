@@ -31,6 +31,7 @@ public class SumOfNumberInString {
             char c = str.charAt(i);
     
             if (Character.isDigit(c)) {
+                System.out.println(c - '0');
                 currentNumber = currentNumber * 10 + (c - '0');
             } 
         }
@@ -39,6 +40,6 @@ public class SumOfNumberInString {
     }
     public static void main (String[] args) {
         String s = "abc123def45";
-        System.out.println(findSum(s));
+        System.out.println(findSum2(s));
     }
 }

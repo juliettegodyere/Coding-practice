@@ -1,5 +1,9 @@
 package Arrays;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class RightRotateArray {
     static void rightRotate(int arr[], int d, int n)
     {
@@ -27,5 +31,6 @@ public class RightRotateArray {
  
         rightRotate(arr, 2, arr.length);
         printArray(arr, arr.length);
+
     }
 }

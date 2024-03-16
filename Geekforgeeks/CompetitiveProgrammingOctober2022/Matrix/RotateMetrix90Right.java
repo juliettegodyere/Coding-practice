@@ -1,4 +1,5 @@
 package Matrix;
+//90 degree clockwise
 
 public class RotateMetrix90Right {
     static int n = 4;

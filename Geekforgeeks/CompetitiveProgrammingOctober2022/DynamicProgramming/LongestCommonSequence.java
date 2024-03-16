@@ -28,48 +28,34 @@ public class LongestCommonSequence {
      * the number of parameters that are changing in the recursive call.
      * Theta(mn)
      */
-    public static int lcs(String S1, String S2, int n, int m){
-        int memo[][] = new int[n+1][m+1];
-        for(int i = 0; i <= n; i++){
-            for(int j = 0; j <= m; j++){
-                memo[i][j] = -1;
+
+   static int lcs(String str1, String str2, int m, int n){
+        int L[][] = new int[m + 1][n + 1];
+        int i, j;
+ 
+        // Following steps build L[m+1][n+1] in
+        // bottom up fashion. Note that L[i][j]
+        // contains length of LCS of str1[0..i-1]
+        // and str2[0..j-1]
+        for (i = 0; i <= m; i++) {
+            for (j = 0; j <= n; j++) {
+                if (i == 0 || j == 0)
+                    L[i][j] = 0;
+ 
+                else if (str1.charAt(i - 1)
+                         == str2.charAt(j - 1))
+                    L[i][j] = L[i - 1][j - 1] + 1;
+ 
+                else
+                    L[i][j] = Math.max(L[i - 1][j],
+                                       L[i][j - 1]);
             }
         }
-        if(memo[n][m] !=-1){
-            return memo[n][m];
-        }
-        if(n == 0 || m == 0){
-           memo[n][m] = 0;
-        }
-       if(S1.charAt(n-1) == S2.charAt(m-1)){
-           memo[n][m] =  1+lcs(S1, S2, n-1, m-1);
-       }else{
-            memo[n][m] = Math.max(lcs(S1, S2, n-1, m), lcs(S1, S2, n, m-1));
-       }
-       return memo[n][m];
-   }
-   /**
-    * tabulation method
-    */
-    public static int lcs2(String S1, String S2, int m, int n){
-        int memo[][] = new int[m+1][n+1];
-        for(int i = 0; i <= m; i++){
-            memo[i][0] = 0;
-        }
-        for(int j = 0; j <= n; j++){
-            memo[0][j] = 0;
-        }
-        for(int i = 1; i <= m; i++){
-            for(int j = 1; j <= n; j++){
-                if(S1.charAt(i-1) == S2.charAt(j-1)){
-                    memo[i][j] =  1+memo[i-1][j-1];
-                }else{
-                     memo[i][j] = Math.max(memo[i-1][j], memo[i][j-1]);
-                }
-            } 
-        }
-       return memo[n][m];
-   }
+ 
+        // L[m][n] contains length of LCS
+        // for X[0..n-1] and Y[0..m-1]
+        return L[m][n];
+    }
 
    public static void main(String[] args) 
    {   
@@ -77,6 +63,6 @@ public class LongestCommonSequence {
        String S2 = "BAZ";
        int n = S1.length();
        int m = S2.length();
-       System.out.println(lcs2(S1, S2, n, m));
+       System.out.println(lcs(S1, S2, n, m));
    }
 }

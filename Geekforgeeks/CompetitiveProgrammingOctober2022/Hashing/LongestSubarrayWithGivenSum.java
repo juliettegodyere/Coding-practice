@@ -19,6 +19,7 @@
 package Hashing;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class LongestSubarrayWithGivenSum {
     public static void main (String[] args) 
@@ -51,6 +52,7 @@ public class LongestSubarrayWithGivenSum {
              // HashMap to store (sum, index) tuples
              HashMap<Integer, Integer> map = new HashMap<>();
              int prefix_sum = 0, maxLen = 0;
+             
  
              // traverse the given array
              for (int i = 0; i < n; i++) {

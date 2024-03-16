@@ -12,14 +12,8 @@ public class CheckIfStringContainsDigits {
     static boolean isDigit(String s){
         int n = s.length();
         for(int i = 0; i < n; i++){
-            System.out.println(s.charAt(i));
             int c = s.charAt(i);
-            System.out.println(c >= 0);
-            System.out.println(c <= 9);
-
-            if((c >= 0) && (c <= 9)){
-                //continue;
-            }else{
+            if(!Character.isDigit(c)){
                 return false;
             }
         }
@@ -29,7 +23,7 @@ public class CheckIfStringContainsDigits {
 
     public static void main(String[] args) {
 
-        String c = "123989";
+        String c = "123989012d";
         System.out.println(isDigit(c));
     }
 }

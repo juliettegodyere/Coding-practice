@@ -27,14 +27,15 @@ public class SortAnArrayAccordingToTheOther {
         int idx = ind;
         // store the remaining elements of A1 in sorted
         // order in ans array
-        for (HashMap.Entry<Integer, Integer> it :
-             mp.entrySet()) {
+        for (HashMap.Entry<Integer, Integer> it :mp.entrySet()) {
  
             // it.second = frequency of remaining elements
             for (int j = 1; j <= it.getValue(); j++)
                 ans[ind++] = it.getKey();
         }
         Arrays.sort(ans, idx, N);
+
+        
     }
     static void printArray(int arr[], int n)
     {

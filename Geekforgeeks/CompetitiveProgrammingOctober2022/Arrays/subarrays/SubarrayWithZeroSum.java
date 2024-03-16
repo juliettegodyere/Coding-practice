@@ -12,7 +12,7 @@
  * Note that the problem deals with subarrays that are contiguous, i.e., 
  * whose elements occupy consecutive positions in the array.
  */
-package Arrays;
+package Arrays.subarrays;
 
 import java.util.*;
 

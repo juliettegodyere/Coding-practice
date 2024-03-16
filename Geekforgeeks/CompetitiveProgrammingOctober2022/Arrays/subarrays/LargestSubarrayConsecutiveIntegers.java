@@ -10,7 +10,7 @@
  * https://www.geeksforgeeks.org/length-largest-subarray-contiguous-elements-set-1/
  * Length of the largest subarray with contiguous elements | Set 1
  */
-package Arrays;
+package Arrays.subarrays;
 
 import java.util.HashSet;
 

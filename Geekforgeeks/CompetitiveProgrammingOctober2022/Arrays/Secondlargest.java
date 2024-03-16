@@ -39,6 +39,7 @@ public class Secondlargest {
         return second;
 
     }
+
     public static void main(String[] args) 
     {   
         int[] arr = {10, 10, 10, 10, 10};

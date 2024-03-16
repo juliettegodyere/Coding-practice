@@ -24,6 +24,25 @@ public class CoinChangeMinimum {
         }
         return DP[n][num];
     }
+
+    public static int getMinRecursion(int coins[], int val, int n){
+
+        if(val == 0){
+            return 0;
+        }
+        int res = Integer.MAX_VALUE;
+       
+        for(int i = 0; i<=n; i++){
+            if(coins[i] <= val){
+                int sub_res = getMinRecursion(coins, val-coins[i], n);
+
+                if(sub_res != Integer.MAX_VALUE){
+                    res = Math.min(res, sub_res+1);
+                }
+            }
+       }
+        return res;
+    }
     public static void main(String[] args) 
     {   
     int coin[] = {1,2, 3};

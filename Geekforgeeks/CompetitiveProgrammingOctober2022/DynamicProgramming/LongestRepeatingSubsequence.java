@@ -18,10 +18,45 @@
  * index 2 in the other string. If that is the case, then don't increment the 
  * length of LCS. i.e don't make a recursive call with 1 plus M-1 and N-1. Rather 
  * go into the ealse part and take the maximum of two cases.
+ * https://www.youtube.com/watch?v=ZqG89Z-dKpI
  * 
  */
 package DynamicProgramming;
 
 public class LongestRepeatingSubsequence {
-    
+    static int lrs(String str1, String str2, int m, int n){
+        int L[][] = new int[m + 1][n + 1];
+        int i, j;
+ 
+        // Following steps build L[m+1][n+1] in
+        // bottom up fashion. Note that L[i][j]
+        // contains length of LCS of str1[0..i-1]
+        // and str2[0..j-1]
+        for (i = 0; i <= m; i++) {
+            for (j = 0; j <= n; j++) {
+                if (i == 0 || j == 0)
+                    L[i][j] = 0;
+ 
+                else if (str1.charAt(i - 1) == str2.charAt(j - 1) && i !=j)
+                    L[i][j] = L[i - 1][j - 1] + 1;
+ 
+                else
+                    L[i][j] = Math.max(L[i - 1][j], L[i][j - 1]);
+            }
+        }
+ 
+        // L[m][n] contains length of LCS
+        // for X[0..n-1] and Y[0..m-1]
+        return L[m][n];
+    }
+
+   public static void main(String[] args) 
+   {   
+        //You will be give only one string. Duplicate the string and find the LPS
+       String S1 = "AXZY";
+       String S2 = "AXZY";
+       int n = S1.length();
+       int m = S2.length();
+       System.out.println(lrs(S1, S2, n, m));
+   }
 }

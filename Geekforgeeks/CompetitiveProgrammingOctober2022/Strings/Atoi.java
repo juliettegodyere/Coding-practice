@@ -36,6 +36,7 @@ public class Atoi {
          // Return result with sign
          return sign * res;
     }
+    
     static int myAtoi2(char[] str)
     {
         int sign = 1, base = 0, i = 0;

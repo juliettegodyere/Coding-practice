@@ -9,11 +9,11 @@
  * If the sum is seen before, there exists a subarray with a sum of 0, which ends at the 
  * current index, and update the largest subarray if the current subarray has more length.
  */
-package Arrays;
+package Arrays.subarrays;
 
 import java.util.*;
 
-public class MaxSubarrayWithZeroSumCount {
+public class MaxSubarrayWithZeroSum {
     /**Using Brute force
      * We can optimize the method to run in O(n2) time by calculating the subarray 
      * sum in constant time.

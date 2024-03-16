@@ -1,4 +1,4 @@
-package Strings;
+package Strings.Substring;
 
 public class FindSubstring {
     /**String s1 = "geeksforgeeks";

@@ -22,7 +22,7 @@ public class MergeOverlappingIntervals3 {
         }
 
         // Sort intervals based on their start points
-        Arrays.sort(intervals, Comparator.comparingInt((i) -> i[0]));
+        Arrays.sort(intervals, Comparator.comparing((interval) -> interval[0]));
 
         List<int[]> mergedIntervals = new ArrayList<>();
         int[] currentInterval = intervals[0];

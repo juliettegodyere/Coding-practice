@@ -3,7 +3,7 @@
  * 
  */
 
-package Arrays;
+package Arrays.subarrays;
 
 public class MaximumCircularSubarraySum {
     //Naive O(N^2)

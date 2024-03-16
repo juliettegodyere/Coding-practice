@@ -4,7 +4,7 @@
  */
 package DynamicProgramming;
 
-public class MaxdeletionsInsertions {
+public class EditDistance {
     static int eD(String s1, String s2, int m, int n)
         {
             int dp[][]= new int[m+1][n+1];

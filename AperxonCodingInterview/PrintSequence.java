@@ -1,4 +1,5 @@
-/* Implement a method which performs basic string compression by counting sequences of repeating characters. Given "AABBBCCCD" it should return "A2B3C3D1". 
+/* Implement a method which performs basic string compression by counting sequences of repeating characters. 
+Given "AABBBCCCD" it should return "A2B3C3D1". 
 Sample Input:
 
 AABBBCCCD
@@ -23,11 +24,11 @@ public class PrintSequence {
         for(int i = 0; i < n; i++){
             int count = 1;
             for(int j = i+1; j < n; j++){
-            if(str.charAt(j) == str.charAt(i)){
-                count++;
-            }else{
-                break;
-            }
+                if(str.charAt(j) == str.charAt(i)){
+                    count++;
+                }else{
+                    break;
+                }
             }
             result+=str.charAt(i)+""+count;
             i+=count-1;
@@ -53,6 +54,45 @@ public class PrintSequence {
             result+=m.getKey()+""+m.getValue();
         }
         return result;
+    }
+    //Compressed string for the example here https://leetcode.com/problems/string-compression/
+    public int compress(char[] chars) {
+        int n = chars.length;
+        if (n <= 1) {
+            return n; // No compression needed for single character or empty array
+        }
+
+        int compressedIdx = 0; // Index to write compressed characters
+        char currentChar = chars[0];
+        int count = 1;
+
+        for (int i = 1; i < n; i++) {
+            if (chars[i] == currentChar) {
+                count++;
+            } else {
+                chars[compressedIdx++] = currentChar;
+                if (count > 1) {
+                    char[] countChars = String.valueOf(count).toCharArray();
+                    for (char c : countChars) {
+                        chars[compressedIdx++] = c;
+                    }
+                }
+                // Update current character and reset count
+                currentChar = chars[i];
+                count = 1;
+            }
+        }
+
+        // Write the last group of characters
+        chars[compressedIdx++] = currentChar;
+        if (count > 1) {
+            char[] countChars = String.valueOf(count).toCharArray();
+            for (char c : countChars) {
+                chars[compressedIdx++] = c;
+            }
+        }
+
+        return compressedIdx; // Length of the compressed array
     }
 
     public static void main(String[] args){

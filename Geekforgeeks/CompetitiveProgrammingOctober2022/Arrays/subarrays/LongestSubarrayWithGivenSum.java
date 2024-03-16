@@ -11,11 +11,11 @@
  * The longest subarray is { -5, 5, 3, 5 } 
  * having length 4
  */
-package Arrays;
+package Arrays.subarrays;
 
 import java.util.*;
 
-public class MaximumLengthSubarray {
+public class LongestSubarrayWithGivenSum {
     static void findMaxLenSubarray(int arr[], int n, int target){
         int len = 0;
         int left_idx = 0;
@@ -170,17 +170,11 @@ public class MaximumLengthSubarray {
      *      * https://www.youtube.com/watch?v=yDeNqw_dAU0
      */
     public static void findMaxLenSubarray(int[] nums, int S){
-        // create an empty HashMap to store the ending index of the first
-        // subarray having some sum
         Map<Integer, Integer> map = new HashMap<>();
- 
-        // insert (0, -1) pair into the set to handle the case when a
-        // subarray with sum `S` starts from index 0
         map.put(0, -1);
  
         int target = 0;
  
-        // `len` stores the maximum length of subarray with sum `S`
         int len = 0;
  
         // stores ending index of the maximum length subarray having sum `S`

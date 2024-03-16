@@ -51,8 +51,8 @@ public class SubsetGeneration {
         int[] S = { 1, 3, 1 };
         Deque<Integer> set = new ArrayDeque<>();
 
-        //subSet(str, "", 0);
-        findPowerSet(S, set, S.length);
+        subSet(str, "", 0);
+        //findPowerSet(S, set, S.length);
 
 	}
 }

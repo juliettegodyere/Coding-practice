@@ -16,7 +16,7 @@
  * and see if anyone matches. The time complexity will be exponential 0(2^n * n)
  */
 
-package Strings;
+package Strings.Subsequences;
 
 public class StringSubsequenceOther {
     /**

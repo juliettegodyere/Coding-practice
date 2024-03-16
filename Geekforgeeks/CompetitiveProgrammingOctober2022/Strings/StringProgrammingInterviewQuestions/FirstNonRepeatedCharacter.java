@@ -9,7 +9,6 @@ public class FirstNonRepeatedCharacter {
     static char nonRepeated(String s){
         int n = s.length();
         Map<Character, Integer> map = new HashMap<>();
-
         for(int i = 0; i < n; i++){
             if(map.containsKey(s.charAt(i))){
                 //System.out.println(s.charAt(i));
@@ -43,6 +42,6 @@ public class FirstNonRepeatedCharacter {
     public static void main(String[] args) 
     {   
         String str = "Hehhhhlllllo";
-        System.out.println(nonRepeated(str));
+        System.out.println(nonRepeated2(str, str.length()));
     }
 }

@@ -15,24 +15,23 @@
 package Recursion;
 
 public class MinimumJumpsToEnd {
-    static int minJumps(int arr[], int n) 
-    { 
-        
-        if(n == 1){
-            return 0;
+    static int minJumps(int arr[], int n) {
+        if (n == 1) {
+            return 0; // No jumps needed if the array has only one element
         }
-        int res = Integer.MAX_VALUE; 
-        for (int i = 1; i < n-2; i++) { 
-            if(i + arr[i] >= n-1){
-                int sub_res = minJumps(arr, i+1);
-                if(sub_res != Integer.MAX_VALUE){
-                    res = Math.min(res, sub_res+1);
+        int res = Integer.MAX_VALUE;
+        for (int i = 1; i < n; i++) {
+            // Check if the current index 'i' along with its value can reach the end of the array
+            if (i + arr[i] >= n - 1) {
+                // Recursively find the minimum number of jumps needed from index 'i' onwards
+                int sub_res = minJumps(arr, i);
+                // Update the result if a valid solution is found
+                if (sub_res != Integer.MAX_VALUE) {
+                    res = Math.min(res, sub_res + 1);
                 }
             }
-           
-            
-        } 
-        return res; 
+        }
+        return res;
     }
             
 	public static void main (String[] args) 

@@ -2,8 +2,11 @@ package Sainsbury;
 
 /**
  * Give me the solution to this problem in java
-The chessboard bellow has 64 squares, 8 rows and 8 columns each is labelled from 1 to 8 and each column is labelled from a t h lowercase. A square is located at the intersection of a row and of a column like square 2c it's intersection of the row 2 and column C.
-Positioning a pawn to a starting square, you need to find out the end square after moving it R times (rows vertically) to the top and C times (Column) horitally to the right. If during the moves the pawn reaches the end of the board, it will start again from the opposite direction like in the second example. 
+The chessboard bellow has 64 squares, 8 rows and 8 columns each is labelled from 1 to 8 and each column is labelled from a to h lowercase. 
+A square is located at the intersection of a row and of a column like square 2c it's intersection of the row 2 and column C.
+Positioning a pawn to a starting square, you need to find out the end square after moving it R times (rows vertically) 
+to the top and C times (Column) horitally to the right. If during the moves the pawn reaches the end of the board, it will 
+start again from the opposite direction like in the second example. 
 
 String startPosition
 Number rows

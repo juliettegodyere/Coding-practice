@@ -1,4 +1,4 @@
-package Strings;
+package Strings.Subsequences;
 
 public class CheckSubsequence {
     static boolean isSubquence(String str1, String str2, int n, int m){

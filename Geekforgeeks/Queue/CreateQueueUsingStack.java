@@ -8,7 +8,7 @@ import java.util.Stack;
 //https://www.youtube.com/watch?v=dGv0QeJf5F8
 public class CreateQueueUsingStack {
      Deque<Integer> stack1;
-    Deque<Integer> stack2;
+     Deque<Integer> stack2;
    
     public CreateQueueUsingStack(Deque stack1, Deque stack2){
         this.stack1 = stack1;
@@ -17,12 +17,6 @@ public class CreateQueueUsingStack {
 
     boolean isEmpty(){
         return this.stack1.isEmpty();
-    }
-
-    /* Function to push an item to stack*/
-    void push(int new_data)
-    {
-        
     }
  
     int pop() {
@@ -62,12 +56,10 @@ public class CreateQueueUsingStack {
     public static void main(String args[])
     {
         /* Create a queue with items 1 2 3*/
-        Queue q = new Queue();
-        q.stack1 = new Stack<>();
-        q.stack2 = new Stack<>();
-        enQueue(q, 1);
-        enQueue(q, 2);
-        enQueue(q, 3);
+        CreateQueueUsingStack q = new CreateQueueUsingStack(new Stack<>(), new Stack<>());
+        q.enQueue(q, 1);
+        q.enQueue(q, 2);
+        q.enQueue(q, 3);
  
         /* Dequeue items */
         System.out.print(deQueue(q) + " ");

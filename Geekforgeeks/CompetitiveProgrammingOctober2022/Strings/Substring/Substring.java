@@ -1,6 +1,6 @@
 
 //Generate all possible substring
-package Strings;
+package Strings.Substring;
 
 import java.util.HashSet;
 

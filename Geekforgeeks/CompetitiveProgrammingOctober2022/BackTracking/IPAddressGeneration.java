@@ -37,9 +37,10 @@ public class IPAddressGeneration {
             current.remove(current.size() - 1);
         }
     }
+    
 
     public static void main(String[] args) {
-        String s = "55";
+        String s = "557898";
         List<String> result = genIp(s);
         System.out.println("Generated IP Addresses:");
         for (String ip : result) {

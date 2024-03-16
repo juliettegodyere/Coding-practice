@@ -1,12 +1,13 @@
-package Strings;
+package Strings.Substring;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
 public class LongestSubstringDistinctCharacters {
-    static boolean isDistinct(String str, int i, int j){
+    // START OF SOLUTION 1
+    static boolean areDistinct(String str, int i, int j){
         boolean[] visited = new boolean[256];
-        for(int k = 0; k < j; k++){
+        for(int k = i; k <= j; k++){
             if(visited[str.charAt(k)] == true){
                 return false;
             }
@@ -15,18 +16,7 @@ public class LongestSubstringDistinctCharacters {
         return true;
     }
 
-    static boolean isDistinct2(String str, int start, int end) {
-        HashSet<Character> set = new HashSet<>();
-        for (int i = start; i <= end; i++) {
-            if (set.contains(str.charAt(i))) {
-                return false;
-            }
-            set.add(str.charAt(i));
-        }
-        return true;
-    }
-   
-    /**
+     /**
      * Naive method N^3
      * abac
      * res = 0
@@ -45,14 +35,16 @@ public class LongestSubstringDistinctCharacters {
         int res = 0;
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
-                if(isDistinct2(str, i, j)){
+                if(areDistinct(str, i, j)){
                     res = Math.max(res, j-i+1);
                 }
             }
         }
         return res;
     }
-    //Better solution N^2
+     // END OF SOLUTION 1
+
+     //START OF SOLUTION 2 - Better solution N^2
     static int longestDistinct2(String str){
         int n = str.length();
         int res = 0;
@@ -69,43 +61,27 @@ public class LongestSubstringDistinctCharacters {
         }
         return res;
     }
-    //O(n)
-    static int longestDistinct4(String str) 
+     // END OF SOLUTION 2
+
+    //START OF SOLUTION 3 - Better solution O(n)
+    static int longestDistinct3(String str) 
     { 
-	int n = str.length(); 
-	int res = 0;
-	int prev[]=new int[256];
-	Arrays.fill(prev,-1);
-	int i=0;
-	for (int j = 0; j < n; j++){
-	    i=Math.max(i,prev[str.charAt(j)]+1);
-	    int maxEnd=j-i+1;
-	    res=Math.max(res,maxEnd);
-	    prev[str.charAt(j)]=j;
-	} 
-	return res; 
-    } 
-    //The working example
-    static int longestDistinct3(String str) {
-        int n = str.length();
+        int n = str.length(); 
         int res = 0;
-        int i = 0;
-        int j = 0;
-        HashSet<Character> set = new HashSet<>();
-
-        while (j < n) {
-            if (!set.contains(str.charAt(j))) {
-                set.add(str.charAt(j));
-                res = Math.max(res, j - i + 1);
-                j++;
-            } else {
-                set.remove(str.charAt(i));
-                i++;
-            }
-        }
-
-        return res;
-    }
+        int prev[]=new int[256];
+        Arrays.fill(prev,-1);
+        int i=0;
+        for (int j = 0; j < n; j++){
+            i=Math.max(i,prev[str.charAt(j)]+1);
+            int maxEnd=j-i+1;
+            res=Math.max(res,maxEnd);
+            prev[str.charAt(j)]=j;
+        } 
+        return res; 
+    } 
+    
+    // END OF SOLUTION 3
+   
     public static void main(String args[]) 
     { 
         String str = "aaa"; 

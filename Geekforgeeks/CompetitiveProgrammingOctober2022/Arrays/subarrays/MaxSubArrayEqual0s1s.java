@@ -6,7 +6,7 @@
  * Output: Largest subarray is { 0, 1, 0, 1 } or { 1, 0, 1, 0 }
  * https://www.techiedelight.com/find-maximum-length-sub-array-equal-number-0s-1s/
  */
-package Arrays;
+package Arrays.subarrays;
 
 import java.util.HashMap;
 import java.util.Map;

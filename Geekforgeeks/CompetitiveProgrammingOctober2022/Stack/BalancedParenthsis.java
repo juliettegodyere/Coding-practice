@@ -24,6 +24,7 @@ public class BalancedParenthsis {
                     s.pop();
                 }
             }
+            
         }
         return (s.isEmpty() == true);
     }
@@ -33,4 +34,5 @@ public class BalancedParenthsis {
         (a=='[' && b==']') ||
         (a=='{' && b=='}'));
     }
+    
 }

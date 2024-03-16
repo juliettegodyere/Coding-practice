@@ -37,10 +37,12 @@ public class LongestConsecutiveSequence {
         }
         return longestStreak;
     }
+
     public static void main (String[] args)
     {
         int[] arr = { 2, 0, 6, 1, 5, 3, 7 };
         int n = arr.length;
+
  
         System.out.println("The length of the maximum consecutive subsequence is " +
         longestSequence(arr, n));

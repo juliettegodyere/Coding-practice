@@ -9,75 +9,62 @@ import java.util.Stack;
  */
 
 public class CreateStackUsingQueue {
-    static Queue<Integer> q1 = new LinkedList<Integer>(); 
-    static Queue<Integer> q2 = new LinkedList<Integer>(); 
+	static Queue<Integer> q1 = new LinkedList<Integer>();
+	static Queue<Integer> q2 = new LinkedList<Integer>();
 
-		
-		static int curr_size; 
+	static int curr_size;
 
-		CreateStackUsingQueue() 
-		{ 
-			curr_size = 0; 
-		} 
+	CreateStackUsingQueue() {
+		curr_size = 0;
+	}
 
-		static void push(int x) 
-		{ 
-			curr_size++; 
+	static void push(int x) {
+		curr_size++;
 
-			
-			q2.add(x); 
+		q2.add(x);
 
-			
-			while (!q1.isEmpty()) { 
-				q2.add(q1.peek()); 
-				q1.remove(); 
-			} 
+		while (!q1.isEmpty()) {
+			q2.add(q1.peek());
+			q1.remove();
+		}
 
-		 
-			Queue<Integer> q = q1; 
-			q1 = q2; 
-			q2 = q; 
-		} 
+		Queue<Integer> q = q1;
+		q1 = q2;
+		q2 = q;
+	}
 
-		static void pop() 
-		{ 
+	static void pop() {
 
-			
-			if (q1.isEmpty()) 
-				return; 
-			q1.remove(); 
-			curr_size--; 
-		} 
+		if (q1.isEmpty())
+			return;
+		q1.remove();
+		curr_size--;
+	}
 
-		static int top() 
-		{ 
-			if (q1.isEmpty()) 
-				return -1; 
-			return q1.peek(); 
-		} 
+	static int top() {
+		if (q1.isEmpty())
+			return -1;
+		return q1.peek();
+	}
 
-		static int size() 
-		{ 
-			return curr_size; 
-		} 
-	
+	static int size() {
+		return curr_size;
+	}
 
-	
-	public static void main(String[] args) 
-	{ 
-		CreateStackUsingQueue s = new CreateStackUsingQueue(); 
-		s.push(10); 
-        s.push(5); 
-        s.push(15); 
-        s.push(20);
+	public static void main(String[] args) {
+		CreateStackUsingQueue s = new CreateStackUsingQueue();
+		s.push(10);
+		s.push(5);
+		s.push(15);
+		s.push(20);
 
-		System.out.println("current size: " + s.size()); 
-		System.out.println(s.top()); 
-		s.pop(); 
-		System.out.println(s.top()); 
-		s.pop(); 
-		System.out.println(s.top()); 
+		System.out.println("current size: " + s.size());
+		System.out.println(s.top());
+		s.pop();
+		System.out.println(s.top());
+		s.pop();
+		System.out.println(s.top());
 
-		System.out.println("current size: " + s.size()); 
+		System.out.println("current size: " + s.size());
 	}
 }

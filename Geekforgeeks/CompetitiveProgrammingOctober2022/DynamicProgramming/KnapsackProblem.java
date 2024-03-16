@@ -26,6 +26,19 @@ public class KnapsackProblem {
         }
         return dp[n][W];
     } 
+
+    static int knapSackRecursion(int W, int wt[], int val[], int n) 
+    { 
+      
+        if(W == 0 || n == 0){
+            return 0;
+        }
+        if(wt[n-1] > W){
+            return knapSackRecursion(W, wt, val, n-1);
+        }else{
+            return Math.max(knapSackRecursion(W, wt, val, n-1), val[n-1]+ knapSackRecursion(W-wt[n-1], wt, val, n-1));
+        }
+    } 
             
 	public static void main (String[] args) 
 	{
